@@ -1,0 +1,12 @@
+name: Supabase keepalive
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -s "https://dzfqfdjdmddjhmvviyvk.supabase.co/rest/v1/leaderboard?select=id&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6ZnFmZGpkbWRkamhtdnZpeXZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2NjEwMDEsImV4cCI6MjA5ODIzNzAwMX0.M5FRH4hNcgXwiUi0bm9P6tMs9JMqrDZo7B8oaTaH5dI" > /dev/null && echo pinged
